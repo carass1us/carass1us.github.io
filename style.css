@@ -1,0 +1,167 @@
+body {
+  font-family: Inter;
+  background: #f5f5f5;
+  color: #000;
+  padding-top: 0px;
+  padding-right: 130px;
+  padding-left: 130px;
+  /* max-width: 1440px; */
+  height: 4811px;
+}
+
+#header {
+  display: flex;
+  /* width: 1440px; */
+  height: 164px;
+  padding: 0 1266px 0 0;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+h {
+  color: #000;
+  font-family: Inter;
+  font-size: 52.322px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1.046px;
+}
+h2 {
+  grid-area: header;
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  text-align: left;
+}
+
+#desc {
+  color: rgba(0, 0, 0, 0.75);
+  font-family: Inter;
+  font-size: 19.621px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 29.431px */
+  width:650px;
+}
+
+img{
+  position:absolute;
+  width: 170px;
+  height: auto;
+  flex-shrink: 0;
+  aspect-ratio: 23/71;
+  right: 0px;
+  top: 150px;
+}
+
+.pencet {
+  display: flex;
+  padding: 16.351px 26.161px;
+  align-items: center;
+  gap: 6.54px;
+  border-radius: 6.54px;
+  background: #000;
+  box-shadow: 0 0.818px 1.635px 0 rgba(0, 0, 0, 0.05);
+  width:auto;
+  color:#fff;
+
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 18px ;
+  display: none;
+  overflow: hidden;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #d5d5d536;
+  color:#000;
+}
+
+.one {
+  color: #000;
+  font-family: Inter;
+  font-size: 22.431px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.589px;
+  margin-bottom: 4px;
+}
+
+.two {
+  color: #000;
+  font-family: Inter;
+  font-size: 18.621px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 29.431px */
+  margin:0px;
+}
+
+.three {
+  margin: 0px;
+  color: #565656;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 29.431px */
+  width: 80%;
+}
+
+.container {
+  margin-top:60px;
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'porto1 porto2 porto3'
+    'porto4 porto5 porto6';
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 8px;
+  background-color: #f6020200;
+  padding: 5px;
+  row-gap: 20px;
+  width: 80%;
+}
+.container > div {
+  font-family: Inter;
+  font-size: 18.621px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 29.431px */
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+.container > div.header {
+  grid-area: header;
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  text-align: left;
+}*/
+
+.container > div.porto1 {
+  grid-area: porto1;    
+}
+.container > div.porto2 {
+  grid-area: porto2;
+}
+.container > div.porto3 {
+  grid-area: porto3;
+}
+
+iframe {
+  border: none;
+  border-radius:9.54px;
+}
