@@ -1,167 +1,334 @@
+/* CSS Variables for easy theming */
+:root {
+    --bg-color: #0f172a;       /* Very dark blue/slate */
+    --card-bg: #1e293b;        /* Lighter slate */
+    --text-primary: #f1f5f9;   /* Off-white */
+    --text-secondary: #94a3b8; /* Light gray */
+    --accent: #38bdf8;         /* Electric Blue */
+    --accent-hover: #0ea5e9;
+    --border: #334155;
+    --font-main: 'Inter', sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: Inter;
-  background: #f5f5f5;
-  color: #000;
-  padding-top: 0px;
-  padding-right: 130px;
-  padding-left: 130px;
-  /* max-width: 1440px; */
-  height: 4811px;
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    scroll-behavior: smooth;
 }
 
-#header {
-  display: flex;
-  /* width: 1440px; */
-  height: 164px;
-  padding: 0 1266px 0 0;
-  align-items: center;
-  flex-shrink: 0;
-  margin: 0;
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    position: sticky;
+    top: 0;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
 }
 
-h {
-  color: #000;
-  font-family: Inter;
-  font-size: 52.322px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -1.046px;
-}
-h2 {
-  grid-area: header;
-  color: #000;
-  font-family: Inter;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  text-align: left;
-}
+.logo { font-weight: 700; font-size: 1.2rem; letter-spacing: 0px; }
 
-#desc {
-  color: rgba(0, 0, 0, 0.75);
-  font-family: Inter;
-  font-size: 19.621px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 29.431px */
-  width:650px;
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { 
+    color: var(--text-secondary); 
+    font-size: 0.9rem; 
+    transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* =========================
+   HERO SECTION (UPDATED)
+   ========================= */
+header {
+    /* Mengatur tinggi header agar memenuhi layar */
+    min-height: 90vh;
+    display: flex;
+    align-items: center; /* Menengahkan konten secara vertikal */
+    padding: 2rem 1rem; /* Padding atas/bawah ditambah sedikit agar tidak terlalu mepet di mobile */
 }
 
-img{
-  position:absolute;
-  width: 170px;
-  height: auto;
-  flex-shrink: 0;
-  aspect-ratio: 23/71;
-  right: 0px;
-  top: 150px;
+/* Container baru untuk menampung Teks dan Gambar bersebelahan */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Teks di kiri, gambar di kanan */
+    gap: 4rem; /* Jarak antar teks dan gambar */
+    width: 100%;
 }
 
-.pencet {
-  display: flex;
-  padding: 16.351px 26.161px;
-  align-items: center;
-  gap: 6.54px;
-  border-radius: 6.54px;
-  background: #000;
-  box-shadow: 0 0.818px 1.635px 0 rgba(0, 0, 0, 0.05);
-  width:auto;
-  color:#fff;
-
+/* Styling Bagian Teks */
+.hero-text {
+    flex: 1; /* Mengambil ruang yang tersedia */
+    text-align: left; /* Permintaan: Rata Kiri */
 }
 
-/* Style the collapsible content. Note: hidden by default */
-.content {
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 0 18px ;
-  display: none;
-  overflow: hidden;
+.hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    font-weight: 800;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .collapsible:hover {
-  background-color: #d5d5d536;
-  color:#000;
+.accent-text { color: var(--accent); }
+
+.hero-text .intro-message {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 550px; /* Membatasi lebar teks agar nyaman dibaca */
+    margin-bottom: 2.5rem;
 }
 
-.one {
-  color: #000;
-  font-family: Inter;
-  font-size: 22.431px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.589px;
-  margin-bottom: 4px;
+.cta-button {
+    background-color: var(--accent);
+    color: var(--bg-color);
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+}
+.cta-button:hover { 
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
 }
 
-.two {
-  color: #000;
-  font-family: Inter;
-  font-size: 18.621px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 29.431px */
-  margin:0px;
+/* Styling Bagian Gambar Profile */
+.hero-image {
+    flex-shrink: 0; /* Mencegah gambar mengecil terlalu ekstrem */
 }
 
-.three {
-  margin: 0px;
-  color: #565656;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 29.431px */
-  width: 80%;
+.hero-image img {
+    width: 380px;  /* Ukuran dasar untuk desktop */
+    height: 380px;
+    object-fit: cover; /* Memastikan gambar tidak gepeng */
+    border-radius: 30px; /* Membuat sudut membulat modern (squircle) */
+    border: 4px solid var(--card-bg); /* Border tipis agar menyatu dengan background */
+    /* Efek bayangan/glow halus berwarna aksen */
+    box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.2); 
+    transition: transform 0.3s ease;
 }
 
+.hero-image img:hover {
+    transform: scale(1.02); /* Efek zoom sedikit saat di-hover */
+}
+
+/* --- RESPONSIVE BREAKPOINT UNTUK HERO --- */
+/* Ketika layar kurang dari 900px (Tablet/Mobile) */
+@media (max-width: 960px) {
+    header {
+        min-height: auto; /* Tinggi tidak lagi dipaksa 90vh */
+        padding-top: 6rem; /* Tambah padding atas karena ada navbar fixed */
+        padding-bottom: 4rem;
+    }
+
+    .hero-container {
+        flex-direction: column-reverse; /* Teks di bawah, Gambar di atas */
+        gap: 2.5rem;
+        text-align: center; /* Di mobile, biasanya lebih rapi jika centered */
+    }
+
+    .hero-text {
+        text-align: center; /* Override rata kiri di mobile agar seimbang dengan gambar di atasnya */
+        padding: 0 1rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.8rem; /* Perkecil font judul di mobile */
+    }
+
+    .hero-text .intro-message {
+        margin-left: auto;
+        margin-right: auto; /* Center paragraf */
+        font-size: 1rem;
+    }
+
+    .hero-image img {
+        width: 280px; /* Perkecil ukuran gambar di mobile */
+        height: 280px;
+    }
+}
+/* General Layout */
 .container {
-  margin-top:60px;
-  display: grid;
-  grid-template-areas:
-    'header header header'
-    'porto1 porto2 porto3'
-    'porto4 porto5 porto6';
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 8px;
-  background-color: #f6020200;
-  padding: 5px;
-  row-gap: 20px;
-  width: 80%;
-}
-.container > div {
-  font-family: Inter;
-  font-size: 18.621px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 29.431px */
-  margin-bottom: 0;
-  padding: 5px;
+    max-width: 900px;
+    margin: 6rem auto;
+    padding: 0 1.5rem;
 }
 
-.container > div.header {
-  grid-area: header;
-  color: #000;
-  font-family: Inter;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  text-align: left;
-}*/
-
-.container > div.porto1 {
-  grid-area: porto1;    
-}
-.container > div.porto2 {
-  grid-area: porto2;
-}
-.container > div.porto3 {
-  grid-area: porto3;
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
 }
 
-iframe {
-  border: none;
-  border-radius:9.54px;
+/* Accordion (Experience) */
+.accordion-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.accordion-header:hover { background-color: #263346; }
+
+.accordion-header h3 { font-size: 1.1rem; font-weight: 600; }
+.accordion-header .date { font-size: 0.85rem; color: var(--text-secondary); margin-left: auto; margin-right: 1rem; }
+.accordion-header .icon { font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; }
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #162032;
+}
+
+.accordion-content p { padding: 1.5rem; color: var(--text-secondary); }
+
+/* Active State for Accordion */
+.accordion-item.active .accordion-content /* { max-height: 200px; } */
+.accordion-item.active .icon { transform: rotate(45deg); }
+
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.card h3 { margin-bottom: 0.5rem; }
+.card p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+.view-pdf-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.view-pdf-btn:hover { background: var(--accent); color: var(--bg-color); }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: var(--card-bg);
+}
+.footer-bottom { margin-top: 2rem; color: var(--text-secondary); font-size: 0.8rem; }
+.email-link { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+
+/* Modal (PDF Viewer) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 5% auto;
+    padding: 0;
+    border: 1px solid var(--border);
+    width: 90%;
+    max-width: 1000px;
+    height: 85vh;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.close-modal {
+    color: var(--text-secondary);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+.close-modal:hover { color: var(--accent); }
+
+#modal-title { padding: 1rem; border-bottom: 1px solid var(--border); }
+
+.pdf-container { flex-grow: 1; width: 100%; background: #fff; }
+iframe { width: 100%; height: 100%; }
+
+.modal-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+    text-align: right;
+}
+#download-link { color: var(--accent); font-size: 0.9rem; }
+
+.accordion-content ol {
+    padding: 1.5rem 1.5rem 1.5rem 3.5rem; /* Memberi ruang agar angka tidak terpotong */
+    color: var(--text-secondary);
+    list-style-type: decimal; /* Memastikan format angka 1, 2, 3 */
+}
+
+.accordion-content li {
+    margin-bottom: 0.8rem; /* Jarak antar poin */
+    padding-left: 0.5rem; /* Jarak antara angka dan teks */
+}
+
+.accordion-content li:last-child {
+    margin-bottom: 0;
+}
+
+/* Penyesuaian responsif agar angka tidak terlalu minggir di HP */
+@media (max-width: 600px) {
+    .accordion-content ol {
+        padding-left: 2.5rem; 
+        padding-right: 1rem;
+    }
 }
