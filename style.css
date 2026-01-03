@@ -1,12 +1,12 @@
 /* CSS Variables for easy theming */
 :root {
-    --bg-color: #0f172a;       /* Very dark blue/slate */
+    --bg-color: rgb(2, 18, 24);       /* Very dark blue/slate */
     --card-bg: #1e293b;        /* Lighter slate */
     --text-primary: #f1f5f9;   /* Off-white */
     --text-secondary: #94a3b8; /* Light gray */
-    --accent: #38bdf8;         /* Electric Blue */
+    --accent: #59bcea;         /* Electric Blue */
     --accent-hover: #0ea5e9;
-    --border: #334155;
+    --border: #1f2731;
     --font-main: 'Inter', sans-serif;
 }
 
@@ -36,7 +36,7 @@ nav {
     padding: 1.5rem 5%;
     position: sticky;
     top: 0;
-    background-color: rgba(15, 23, 42, 0.95);
+    background-color: rgba(14, 18, 28, 0.95);
     backdrop-filter: blur(10px);
     z-index: 100;
     border-bottom: 1px solid var(--border);
@@ -44,23 +44,73 @@ nav {
 
 .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: 0px; }
 
-.nav-links { display: flex; gap: 2rem; }
+/* --- UPDATE BAGIAN NAVIGASI --- */
+
+/* 1. Container Navigasi (PENTING: Agar Horizontal) */
+.nav-links { 
+    display: flex;    /* KUNCI agar berjejer ke samping */
+    gap: 2rem;        /* Jarak antar menu */
+    list-style: none; 
+}
+
+/* 2. Style Dasar Link */
 .nav-links a { 
+    position: relative; /* Acuan untuk posisi garis bawah */
     color: var(--text-secondary); 
     font-size: 0.9rem; 
+    text-decoration: none;
     transition: color 0.3s;
+    padding-bottom: 5px; /* Sedikit ruang untuk garis bawah */
 }
-.nav-links a:hover { color: var(--accent); }
+
+/* 3. Membuat Garis Bawah (Awalnya lebar 0/Hilang) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;       /* Mulai dari 0 */
+    height: 2px;    /* Ketebalan garis */
+    bottom: 0;      /* Tempel di bawah */
+    left: 0;
+    
+    /* Gradient Google */
+    background: linear-gradient(90deg, #4285F4, #DB4437, #F4B400, #0F9D58, #4285F4, #DB4437, #F4B400, #0F9D58);
+    background-size: 400%;
+    
+    transition: width 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
+/* 4. SAAT HOVER: Ubah Warna Teks Jadi Google Glow */
+.nav-links a:hover {
+    background: linear-gradient(90deg, #4285F4, #DB4437, #F4B400, #0F9D58, #4285F4, #DB4437, #F4B400, #0F9D58);
+    background-size: 400%;
+    
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    color: transparent; /* Warna asli transparan agar gradient terlihat */
+    
+    animation: googleFlow 4s linear infinite;
+}
+
+/* 5. SAAT HOVER: Garis Memanjang */
+.nav-links a:hover::after {
+    width: 100%; /* Lebar penuh */
+    animation: googleFlow 4s linear infinite; /* Animasi garis ikut bergerak */
+}
 
 /* =========================
    HERO SECTION (UPDATED)
    ========================= */
 header {
-    /* Mengatur tinggi header agar memenuhi layar */
-    min-height: 90vh;
+    min-height: 85vh; /* Kembalikan tinggi layar yang proporsional */
     display: flex;
-    align-items: center; /* Menengahkan konten secara vertikal */
-    padding: 2rem 1rem; /* Padding atas/bawah ditambah sedikit agar tidak terlalu mepet di mobile */
+    align-items: center;
+    padding: 0 1rem; /* Padding standar */
+    
+    /* INI KUNCINYA: Tarik seluruh container ke atas sebanyak 5rem (sekitar 80px) */
+    /* Ubah angkanya jika masih kurang naik (misal jadi -7rem) */
+    margin-top: -2.4rem; 
 }
 
 /* Container baru untuk menampung Teks dan Gambar bersebelahan */
@@ -103,9 +153,35 @@ header {
     transition: background 0.3s, transform 0.2s;
     display: inline-block;
 }
+
+/* Update bagian ini di style.css */
+
 .cta-button:hover { 
-    background-color: var(--accent-hover);
+    /* 1. Mengubah background jadi Gradient Google (Urutan: Biru, Merah, Kuning, Hijau) */
+    /* Kita ulangi warnanya agar looping-nya mulus */
+    background: linear-gradient(
+        90deg,
+        #4285F4, #DB4437, #F4B400, #0F9D58,
+        #4285F4, #DB4437, #F4B400, #0F9D58
+    );
+    
+    /* 2. Memperbesar ukuran background agar bisa digerakkan */
+    background-size: 400%;
+    
+    /* 3. Menggunakan animasi 'googleFlow' yang sudah kamu buat di bawah */
+    /* Durasi 4s agar gerakannya agak cepat dan dinamis */
+    animation: googleFlow 4s linear infinite;
+
+    /* 4. Menambahkan efek Glow (bayangan bersinar) */
+    box-shadow: 0 8px 25px rgba(66, 133, 244, 0.4);
+
+    /* 5. Penyesuaian Teks */
+    color: #ffffff; /* Ubah teks jadi putih agar kontras dengan warna-warni */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Shadow teks agar tetap terbaca saat background kuning */
+    
+    /* Efek naik sedikit */
     transform: translateY(-2px);
+    border: none; 
 }
 
 /* Styling Bagian Gambar Profile */
@@ -113,27 +189,110 @@ header {
     flex-shrink: 0; /* Mencegah gambar mengecil terlalu ekstrem */
 }
 
-.hero-image img {
-    width: 380px;  /* Ukuran dasar untuk desktop */
-    height: 380px;
-    object-fit: cover; /* Memastikan gambar tidak gepeng */
-    border-radius: 30px; /* Membuat sudut membulat modern (squircle) */
-    border: 4px solid var(--card-bg); /* Border tipis agar menyatu dengan background */
-    /* Efek bayangan/glow halus berwarna aksen */
-    box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.2); 
-    transition: transform 0.3s ease;
+/* 1. Container Gambar */
+/* Kita perlu membuatnya 'relative' agar element glow (::before) bisa diposisikan di belakangnya */
+.hero-image {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1; /* Memastikan container ini ada di depan glow */
+    border-radius: 30px; /* Menyamakan radius container dengan image */
 }
 
-.hero-image img:hover {
-    transform: scale(1.02); /* Efek zoom sedikit saat di-hover */
+/* 2. Membuat Lapisan Glow Google (Pseudo-element) */
+/* Ini adalah lapisan tak terlihat di belakang gambar yang berisi gradasi */
+.hero-image::before {
+    content: '';
+    position: absolute;
+    z-index: -1; /* Taruh di belakang gambar asli */
+    
+    /* Membuat lapisan ini sedikit lebih besar dari gambarnya */
+    top: -5%; 
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    
+    border-radius: 35px; /* Radius sedikit lebih besar dari gambar */
+    
+    /* DEFINISI WARNA GOOGLE (Blue, Red, Yellow, Green) */
+    /* Kita ulangi warnanya agar animasinya mulus (seamless loop) */
+    background: linear-gradient(
+        45deg,
+        #4285F4, #DB4437, #F4B400, #0F9D58,
+        #4285F4, #DB4437, #F4B400, #0F9D58
+    );
+    
+    /* Membuat ukuran background sangat besar agar bisa digerakkan */
+    background-size: 400%;
+    
+    /* KUNCI EFEK GLOW: Blur yang kuat */
+    filter: blur(20px); 
+    
+    /* Keadaan default: Tidak terlihat (opacity 0) */
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out; /* Transisi halus saat muncul/hilang */
+    
+    /* Menerapkan animasi 'mengalir' */
+    animation: googleFlow 8s linear infinite;
 }
+
+/* 3. Styling Gambar Asli */
+.hero-image img {
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 30px;
+    
+    /* Border asli (saat tidak di-hover) */
+    border: 4px solid var(--card-bg); 
+    
+    /* Shadow asli (biru tipis saat tidak di-hover) */
+    box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.2);
+    
+    /* Tambahkan transisi untuk border dan shadow juga */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Pastikan gambar menutupi area glow yang tidak di-blur */
+    position: relative; 
+    background-color: var(--card-bg); 
+}
+
+/* --- HOVER STATES (Saat mouse diarahkan) --- */
+
+/* A. Munculkan lapisan glow di belakang */
+.hero-image:hover::before {
+    opacity: 1; /* Glow menjadi terlihat */
+}
+
+/* B. Ubah gambar di depan */
+.hero-image:hover img {
+    transform: scale(1.10); /* Efek zoom sedikit */
+    
+    /* Trik Penting: Ubah border jadi transparan agar tidak menutupi glow */
+    border-color: transparent; 
+    
+    /* Hilangkan shadow biru asli agar tidak bertabrakan dengan glow Google */
+    box-shadow: none; 
+}
+
+
+/* 4. Definisi Animasi "Mengalir" */
+/* Animasi ini menggerakkan posisi background gradasi dari kiri ke kanan */
+@keyframes googleFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%; /* Menggeser sejauh 2x lipat ukuran untuk loop */
+    }
+}
+
 
 /* --- RESPONSIVE BREAKPOINT UNTUK HERO --- */
 /* Ketika layar kurang dari 900px (Tablet/Mobile) */
 @media (max-width: 960px) {
     header {
         min-height: auto; /* Tinggi tidak lagi dipaksa 90vh */
-        padding-top: 6rem; /* Tambah padding atas karena ada navbar fixed */
+        padding-top: 3rem; /* Tambah padding atas karena ada navbar fixed */
         padding-bottom: 4rem;
     }
 
@@ -163,6 +322,57 @@ header {
         height: 280px;
     }
 }
+
+/* --- TYPING EFFECT STYLES --- */
+/* --- TYPING EFFECT STYLES (REFINED) --- */
+/* --- TYPING EFFECT STYLES (INDEPENDENT) --- */
+
+.typing-wrapper {
+    /* Layout */
+    display: block;       /* Memastikan dia mengambil satu baris penuh */
+    margin-top: 0.5rem;   /* Memberi jarak sedikit dari nama "Rafi." */
+    margin-bottom: 1rem;  /* Memberi jarak ke paragraf di bawahnya */
+    margin-left: 0;       /* Reset margin kiri */
+    
+    /* Typography */
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 2.2rem;    /* Ukuran fix (sekitar 24px), sesuaikan selera */
+    font-weight: 600;     /* Agak tebal sedikit agar terbaca jelas */
+    color: #ccd1d3; /* Menggunakan warna aksen (Biru) agar menonjol */
+    letter-spacing: 1px;
+}
+
+.typing-text {
+    position: relative;
+    /* Warna teks mengikuti parent (.typing-wrapper) yaitu biru aksen */
+}
+
+/* Fix Anti-Jump (Tetap Sama) */
+.typing-text:empty::before {
+    content: "\00a0"; 
+    display: inline-block;
+}
+
+/* Cursor (Tetap Sama) */
+.typing-text::after {
+    content: ''; 
+    position: absolute;
+    right: -10px;
+    top: 10%; 
+    height: 80%; 
+    width: 3px; /* Sedikit ditebalkan biar pas dengan font besar */
+    background-color: var(--text-primary); 
+    animation: blinkCursor 0.8s infinite;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    .typing-wrapper {
+        font-size: 1.2rem; /* Perkecil sedikit di HP */
+        margin-top: 0.2rem;
+    }
+}
+
 /* General Layout */
 .container {
     max-width: 900px;
@@ -177,15 +387,61 @@ header {
     padding-left: 1rem;
 }
 
-/* Accordion (Experience) */
+/* --- UPDATED ACCORDION ITEM --- */
 .accordion-item {
-    background-color: var(--card-bg);
+    position: relative;
+    z-index: 1; /* Membuat container ini menjadi layer dasar */
+    
+    background-color: transparent; /* PENTING: Matikan background di parent */
     border: 1px solid var(--border);
     margin-bottom: 1rem;
     border-radius: 6px;
-    overflow: hidden;
+    transition: border-color 0.3s;
 }
 
+/* LAYER 1: GLOW (Paling Bawah) */
+/* Ukurannya lebih besar sedikit (-2px) agar "mengintip" dari belakang */
+.accordion-item::before {
+    content: '';
+    position: absolute;
+    z-index: -2; /* Paling belakang */
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    
+    border-radius: 8px; /* Radius sedikit lebih besar */
+    background: linear-gradient(90deg, #4285F4, #DB4437, #F4B400, #0F9D58, #4285F4, #DB4437, #F4B400, #0F9D58);
+    background-size: 400%;
+    
+    filter: blur(4px); /* Efek pendar */
+    animation: googleFlow 4s linear infinite;
+    
+    opacity: 0; /* Default: Sembunyi */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* LAYER 2: BACKGROUND KARTU (Di Tengah) */
+/* Ini triknya! Kita buat layer warna gelap di atas glow, tapi di bawah teks */
+.accordion-item::after {
+    content: '';
+    position: absolute;
+    z-index: -1; /* Di atas glow (z-index -2), tapi di bawah teks (z-index 1) */
+    top: 0; left: 0; right: 0; bottom: 0;
+    
+    background-color: var(--card-bg); /* Warna kartu dipindah ke sini */
+    border-radius: 6px;
+}
+
+/* TRIGGERS */
+/* Saat hover atau aktif, nyalakan glownya */
+.accordion-item:hover::before,
+.accordion-item.active::before {
+    opacity: 1;
+}
+
+/* Saat hover atau aktif, hilangkan border abu-abu asli biar kelihatan seamless */
+.accordion-item:hover,
+.accordion-item.active {
+    border-color: transparent;
+}
 .accordion-header {
     padding: 1.5rem;
     display: flex;
@@ -195,7 +451,7 @@ header {
     transition: background 0.2s;
 }
 
-.accordion-header:hover { background-color: #263346; }
+/* .accordion-header:hover { background-color: #263346; } */
 
 .accordion-header h3 { font-size: 1.1rem; font-weight: 600; }
 .accordion-header .date { font-size: 0.85rem; color: var(--text-secondary); margin-left: auto; margin-right: 1rem; }
@@ -206,6 +462,8 @@ header {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     background-color: #162032;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .accordion-content p { padding: 1.5rem; color: var(--text-secondary); }
@@ -222,16 +480,54 @@ header {
 }
 
 .card {
-    background-color: var(--card-bg);
+    position: relative;
+    z-index: 1; /* Layer dasar */
+    
+    background-color: transparent; /* Background dipindah ke ::after */
     padding: 2rem;
     border-radius: 6px;
     border: 1px solid var(--border);
+    
     transition: transform 0.3s, border-color 0.3s;
 }
 
+/* Layer 1: Glow (Paling Belakang) */
+.card::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    
+    border-radius: 8px; 
+    background: linear-gradient(90deg, #4285F4, #DB4437, #F4B400, #0F9D58, #4285F4, #DB4437, #F4B400, #0F9D58);
+    background-size: 400%;
+    
+    filter: blur(5px); /* Blur sedikit lebih besar biar smooth */
+    animation: googleFlow 4s linear infinite;
+    
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Layer 2: Background Kartu (Tengah) */
+.card::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0; left: 0; right: 0; bottom: 0;
+    
+    background-color: var(--card-bg);
+    border-radius: 6px;
+}
+
+/* Hover States */
 .card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
+    transform: translateY(-5px); /* Tetap pertahankan efek naik */
+    border-color: transparent;   /* Hilangkan border asli */
+}
+
+.card:hover::before {
+    opacity: 1; /* Munculkan glow */
 }
 
 .card h3 { margin-bottom: 0.5rem; }
@@ -330,5 +626,208 @@ iframe { width: 100%; height: 100%; }
     .accordion-content ol {
         padding-left: 2.5rem; 
         padding-right: 1rem;
+    }
+}
+
+/* =========================
+   DESIGN SECTION (EMBEDDED)
+   ========================= */
+
+/* --- UPDATED PDF CONTAINER --- */
+.pdf-embed-container {
+    position: relative;
+    z-index: 1;
+    
+    width: 100%;
+    height: 80vh; 
+    min-height: 500px;
+    
+    background-color: transparent; /* Background dipindah ke ::after */
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    
+    /* PENTING: Hapus overflow: hidden agar glow bisa keluar */
+    /* overflow: hidden; <-- Dihapus/Komentari */
+    
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s;
+}
+
+/* Layer 1: Glow */
+.pdf-embed-container::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: -3px; left: -3px; right: -3px; bottom: -3px; /* Agak tebal karena ukurannya besar */
+    
+    border-radius: 10px; /* Radius lebih besar dari container */
+    background: linear-gradient(90deg, #4285F4, #DB4437, #F4B400, #0F9D58, #4285F4, #DB4437, #F4B400, #0F9D58);
+    background-size: 400%;
+    
+    filter: blur(6px);
+    animation: googleFlow 4s linear infinite;
+    
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Layer 2: Background */
+.pdf-embed-container::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+}
+
+/* Layer 3: Konten Dalam (Iframe/Object) */
+/* Kita perlu membulatkan sudut iframe karena overflow container sudah tidak hidden */
+.pdf-embed-container iframe, 
+.pdf-embed-container object {
+    border-radius: 8px; 
+    display: block; /* Mencegah gap di bawah */
+}
+
+/* Hover States */
+.pdf-embed-container:hover {
+    border-color: transparent;
+}
+
+.pdf-embed-container:hover::before {
+    opacity: 1;
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    .pdf-embed-container {
+        height: 500px; /* Tinggi tetap yang nyaman untuk scroll di HP */
+    }
+}
+
+/* =========================
+   MOBILE NAVIGATION (HAMBURGER)
+   ========================= */
+
+/* Styling dasar untuk tombol Burger */
+.burger {
+    display: none; /* Sembunyikan di Desktop */
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    margin: 5px;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* RESPONSIF: Saat layar di bawah 768px (Tablet/HP) */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Munculkan tombol burger */
+    .burger {
+        display: block;
+        z-index: 1001; /* Pastikan dia di atas menu slide */
+    }
+
+    /* 2. Ubah Navigasi menjadi "Laci" (Drawer) samping */
+    .nav-links {
+        position: fixed; /* Melayang di atas konten */
+        right: 0px;
+        top: 0px; /* Mulai dari paling atas */
+        height: 100vh; /* Tinggi setara layar penuh */
+        background-color: var(--card-bg); /* Warna background menu */
+        display: flex;
+        flex-direction: column; /* Link disusun ke bawah (bukan ke samping) */
+        align-items: center;
+        justify-content: center; /* Teks di tengah-tengah layar */
+        width: 60%; /* Lebar menu 60% dari layar */
+        
+        /* Efek Animasi Slide */
+        transform: translateX(100%); /* Default: Geser ke kanan (hilang) */
+        transition: transform 0.4s ease-in;
+        z-index: 998; /* Di bawah tombol burger, di atas konten lain */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5); /* Bayangan di sisi kiri menu */
+    }
+    
+    .nav-links li {
+        margin: 1.5rem 0; /* Jarak antar link lebih renggang di HP */
+        opacity: 0; /* Trik animasi (dihandle JS nanti) */
+    }
+
+    /* Class ini akan ditambahkan via JS saat tombol diklik */
+    .nav-active {
+        transform: translateX(0%); /* Geser kembali ke layar (muncul) */
+    }
+}
+
+/* Animasi sederhana saat link muncul (Fade in) */
+@keyframes navLinkFade {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Animasi Burger Menjadi 'X' (Opsional tapi keren) */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0; /* Garis tengah hilang */
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+
+/* =========================================
+   SECONDARY LINK
+   ========================================= */
+
+.cta-group {
+    display: flex;
+    align-items: center; /* Pastikan tombol dan teks sejajar vertikal */
+    gap: 1rem; /* Jarak antara tombol dan teks "or..." */
+    margin-top: 1rem; /* Jarak dari paragraf intro di atasnya */
+}
+
+/* Styling teks "or ..." */
+.secondary-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* Styling link "ristek.link..." */
+.text-link {
+    color: var(--accent); /* Warna biru/sesuai tema */
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+}
+
+/* Efek garis bawah saat hover pada link teks */
+.text-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s;
+}
+
+.text-link:hover::after {
+    width: 100%;
+}
+
+/* Responsif untuk HP: Biar tombol dan teks turun ke bawah jika layar sempit */
+@media (max-width: 480px) {
+    .cta-group {
+        flex-direction: column; /* Tombol di atas, teks di bawah */
+        gap: 0.8rem;
     }
 }
