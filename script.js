@@ -144,4 +144,41 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Element .typing-text tidak ditemukan di HTML!");
     }
 
+    /* =========================================
+    LIVE CLOCK LOGIC
+    ========================================= */
+
+    function updateClock() {
+        const now = new Array();
+        const dateObj = new Date(); // Ambil waktu sekarang
+
+        // 1. FORMAT JAM (HH:MM:SS)
+        // Kita pakai padStart(2, '0') biar kalau jam 9 jadi '09', bukan '9'
+        const hours = String(dateObj.getHours()).padStart(2, '0');
+        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+        const seconds = String(dateObj.getSeconds()).padStart(2, '0'); // Opsional, kalau mau detik
+        
+        // Update HTML Jam
+        // Kalau mau tanpa detik, hapus bagian ":${seconds}" di bawah
+        document.getElementById('clock-time').textContent = `${hours}:${minutes}:${seconds}`;
+
+        // 2. FORMAT TANGGAL (Hari, Tanggal Bulan)
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        const dayName = days[dateObj.getDay()];
+        const dateNum = dateObj.getDate();
+        const monthName = months[dateObj.getMonth()];
+        const year = dateObj.getFullYear();
+
+        // Update HTML Tanggal (Contoh: WED, 07 JAN 2026)
+        document.getElementById('clock-date').textContent = `${dayName}, ${dateNum} ${monthName} ${year}`;
+    }
+
+    // Jalankan fungsi sekali saat web loading biar gak nunggu 1 detik baru muncul
+    updateClock();
+
+    // Jalankan ulang setiap 1000 milidetik (1 detik)
+    setInterval(updateClock, 1000);
+
 });
