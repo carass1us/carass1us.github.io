@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Materials | Rafi</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <nav>
+        <div class="live-clock-container">
+            <div id="clock-time">00:00:00</div>
+            <div id="clock-date">LOADING...</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            
+            <li><a href="teaching.html" class="active">Teaching</a></li>
+            
+            <li>
+                <a href="https://bit.ly/fishnomics" target="_blank" class="nav-links a koi-link">
+                    <i class="fas fa-fish koi-icon"></i> Fishnomics
+                </a>
+            </li>
+        </ul>
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+    <div class="container">
+        <h1>CSPD Econometrics</h1>
+        <p>Repository of slides, problem sets, and discussion notes for my assistance sessions at FEB UI. Advanced applied econometrics focusing on micro-data. Covers causal inference techniques including Fixed & Random Effects, Instrumental Variables (IV), Difference-in-Differences (DiD), and limited dependent variable models.</p>
+    </div>
+    </header>
+
+    <section class="container" style="padding-bottom: 5rem;">
+        <div class="syllabus-timeline">
+            
+            <div class="syllabus-item">
+                <div class="week-badge">Week 0</div>
+                <div class="syllabus-content">
+                    <span class="class-date">Feb 02, 2026</span>
+                    <h3>Prerequisites</h3>
+                    <p>Some resources you guys might find useful. Mainly syllabus and materials.</p>
+                    
+                    <div class="syllabus-actions">
+                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/1i5ar_io3d12FgFCGdCKb1KI2dZxMurHn/preview">
+                            <i class="fas fa-desktop"></i> Syllabus
+                        </button>
+                        
+                        <a href="https://drive.google.com/file/d/1btz1GW7niRyF0BmE_ugGETiy6RqT_osP/preview" download class="btn-action download-btn">
+                            <i class="fas fa-download"></i> Book - Verbeek
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-item">
+                <div class="week-badge">Week 1</div>
+                <div class="syllabus-content">
+                    <span class="class-date">Feb 04, 2026</span>
+                    <h3>Review on Maximum Likelihood Estimation</h3>
+                    <p>The likelihood function and identification of parameters, the principle of maximum likelihood.</p>
+                    
+                    <div class="syllabus-actions">
+                        <button class="btn-action view-slides" data-pdf="assets/docs/week1_slides.pdf">
+                            <i class="fas fa-desktop"></i> View Slides
+                        </button>
+                        
+                        <a href="assets/docs/week1_problemset.pdf" download class="btn-action download-btn">
+                            <i class="fas fa-download"></i> Problem Set
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-item">
+                <div class="week-badge">Week 2</div>
+                <div class="syllabus-content">
+                    <span class="class-date">Feb 11, 2026</span>
+                    <h3>Binary Choice Model: Logit and Probit Model</h3>
+                    <p>Why not a linear regression/linear probability model? Introducing the binary choice model.</p>
+                    
+                    <div class="syllabus-actions">
+                        <button class="btn-action view-slides" data-pdf="assets/docs/week2_slides.pdf">
+                            <i class="fas fa-desktop"></i> View Slides
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+    </section>
+
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <div id="modal-title">Document Preview</div>
+            <span class="close-modal">&times;</span>
+            <div class="pdf-container">
+                <iframe id="pdf-frame" src="" width="100%" height="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <a id="download-link" href="#" target="_blank" class="cta-btn small">Download PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

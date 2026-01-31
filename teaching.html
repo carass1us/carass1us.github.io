@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Repository | Rafi</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="live-clock-container">
+            <div id="clock-time">00:00:00</div>
+            <div id="clock-date">LOADING...</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            
+            <li><a href="teaching.html" class="active">Teaching</a></li>
+            
+            <li>
+                <a href="https://bit.ly/fishnomics" target="_blank" class="nav-links a koi-link">
+                    <i class="fas fa-fish koi-icon"></i> Fishnomics
+                </a>
+            </li>
+        </ul>
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Course Repository</h1>
+            <p>Select a subject to access slides, problem sets, and assistance materials.</p>
+        </div>
+    </header>
+
+    <section class="container" style="padding-bottom: 5rem;">
+        <div class="course-grid">
+            
+            <a href="cspd.html" class="course-card">
+                <div class="course-icon"><i class="fas fa-chart-area"></i></div>
+                <div class="course-info">
+                    <span class="semester-badge">EVEN 2025/2026</span> <span class="semester-badge">CSPD-E IEI</span>
+                    <h3>Cross-Sectional and Panel Data Econometrics</h3>
+                    <p>Micro-econometric methods for causal inference. Focuses on fixed/random effects, IV estimation, and limited dependent variables.</p>
+                    <div class="btn-arrow">View Materials <i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+
+            <a href="#" class="course-card disabled">
+                <div class="course-icon"><i class="fas fa-greater-than-equal"></i></div>
+                <div class="course-info">
+                    <span class="semester-badge">ODD 2024/2025</span>  <span class="semester-badge">Matek 1-C</span>
+                    <h3>Intermediate Mathematical Economics</h3>
+                    <p>Dynamic analysis and advanced optimization. Covers differential equations, difference equations, and optimal control theory.</p>
+                    <div class="btn-arrow">Coming Soon <i class="fas fa-lock"></i></div>
+                </div>
+            </a>
+
+            <a href="#" class="course-card disabled"> 
+                <div class="course-icon"><i class="fas fa-greater-than"></i></div>
+                <div class="course-info">
+                    <span class="semester-badge">EVEN 2024/2025</span> <span class="semester-badge">Matdas-M</span> 
+                    <h3>Introductory Mathematical Economics</h3>
+                    <p>Fundamental quantitative tools. Covers linear algebra, multivariate calculus, and constrained optimization techniques.</p>
+                    <div class="btn-arrow">Coming Soon <i class="fas fa-lock"></i></div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
