@@ -1,4 +1,5 @@
 ---
+order: 3
 title: "Economica.id"
 subtitle: "Writer & Co-coordinator, Studies Division"
 date_start: 2025-03-01

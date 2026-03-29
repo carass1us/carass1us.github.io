@@ -1,4 +1,5 @@
 ---
+order: 1
 title: "CSIS Indonesia"
 subtitle: "Research Intern, Department of Economics"
 date_start: 2025-11-01
