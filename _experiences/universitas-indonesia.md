@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 2
 title: "Universitas Indonesia"
 subtitle: "Teaching Assistant, Department of Economics"
 date_start: 2025-02-01
