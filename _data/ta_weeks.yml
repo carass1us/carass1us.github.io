@@ -1,0 +1,105 @@
+- week: 0
+  date: "Feb 02, 2026"
+  title: "Prerequisites"
+  description: "Some resources you guys might find useful. Mainly syllabus and materials."
+  actions:
+    - type: slides
+      label: "Syllabus [25/26]"
+      icon: "fas fa-desktop"
+      url: "https://drive.google.com/file/d/15iB3uY3vSu_zVzxJWLnVJIbjh9wBz2kB/preview"
+    - type: download
+      label: "Book - Verbeek"
+      icon: "fas fa-download"
+      url: "https://drive.google.com/file/d/1btz1GW7niRyF0BmE_ugGETiy6RqT_osP/preview"
+    - type: download
+      label: "BAS[IE] Exam Bank"
+      icon: "fas fa-file-pdf"
+      url: "https://drive.google.com/drive/folders/19bxGm8mI_L9VV8JgKgFrPvirifPaGcN4?usp=sharing"
+
+- week: 1
+  date: "Feb 04, 2026"
+  title: "Review on Maximum Likelihood Estimation"
+  description: "The likelihood function and identification of parameters, the principle of maximum likelihood."
+  actions:
+    - type: slides
+      label: "Slides [cr: Nathanael Hutabarat]"
+      icon: "fas fa-desktop"
+      url: "https://drive.google.com/file/d/1cBqmHIw1OCxwAgfFSoo5cUIa84oV1sAJ/preview"
+
+- week: 2
+  date: "Feb 11, 2026"
+  title: "Binary Choice Model: Logit and Probit Model"
+  description: "Why not a linear regression/linear probability model? Introducing the binary choice model."
+  actions:
+    - type: slides
+      label: "Slides [cr: Nathanael Hutabarat]"
+      icon: "fas fa-desktop"
+      url: "https://drive.google.com/file/d/16htTP_04qti9Rf2KBpzMaNMmX6fcIixX/preview"
+    - type: download
+      label: ".do File"
+      icon: "fas fa-download"
+      url: "https://drive.google.com/file/d/1Tz90LROvmKp3OjVfOd2dPku2QJH1dIH8/preview"
+
+- week: 3
+  date: "Feb 18, 2026"
+  title: "Multiresponse: Ordered Response Model"
+  description: "Analyze ordinal dependent variables; categories with a natural, inherent ranking, such as survey responses."
+  actions:
+    - type: slides
+      label: "Recording"
+      icon: "fas fa-video"
+      url: "https://drive.google.com/file/d/1aQ497rBjNRGzpHSFrj8Ki_oJa0cFXsVB/preview"
+    - type: slides
+      label: "Slides"
+      icon: "fas fa-desktop"
+      url: "https://drive.google.com/file/d/1WY_KG6XcLnvZ4qjPcqm4zpOOufpJEPFW/preview"
+    - type: download
+      label: ".do File"
+      icon: "fas fa-download"
+      url: "https://drive.google.com/file/d/1yONFrSmlF8DriEusiLwqZ4awJ3UYbV5T/preview"
+
+- week: 4
+  date: "Feb 25, 2026"
+  title: "Multiresponse: Unordered Response Model"
+  description: "Analyze categorical dependent variables with no natural, inherent ranking, such as brand preferences."
+  actions:
+    - type: slides
+      label: "Slides"
+      icon: "fas fa-desktop"
+      url: "https://drive.google.com/file/d/1ck-kNsGBay-xHEKsRUeQFLG-udDNLRzD/preview"
+    - type: download
+      label: ".do File"
+      icon: "fas fa-download"
+      url: "https://drive.google.com/file/d/1s-xGAxMsr-6duBk49JF2pM_UYRknq-O7/preview"
+
+- week: 5
+  date: "March 4, 2026"
+  title: "Count Data Model"
+  description: "Specialized regression techniques for dependent variables that are non-negative integers."
+  actions:
+    - type: slides
+      label: "Slides [cr: Christoper Jhonatan]"
+      icon: "fas fa-desktop"
+      url: "https://drive.google.com/file/d/1fMxLv4ApYwj3SgIJob5ubiXR1PvmcnQm/preview"
+    - type: download
+      label: ".do File"
+      icon: "fas fa-download"
+      url: "https://drive.google.com/file/d/1jalaf2lToI0ihgsriqCyDNBRl7nJMWAc/preview"
+
+- week: 6
+  date: "March 28, 2026"
+  title: "Midterms 2024/2025 Tutorial"
+  description: "Practicing for midterm exams through tutorial from past exams."
+  actions:
+    - type: slides
+      label: "Recording"
+      icon: "fas fa-video"
+      url: "https://drive.google.com/file/d/100XdCi78gBbWlQRHd4736thummrPrHW5/preview"
+    - type: slides
+      label: "Question"
+      icon: "fas fa-desktop"
+      url: "https://drive.google.com/file/d/1rOxaNgM3syQ_Vb1pZ5e3iPArAYUGtqb_/preview"
+    - type: slides
+      label: "Answer"
+      icon: "fas fa-desktop"
+      url: "https://drive.google.com/file/d/1FhGCmG-GLZiYoUMp1KnAfz5PJ3UGh6Ol/preview"
