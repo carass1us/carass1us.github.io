@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 4
 title: "Krakatau Steel Group"
 subtitle: "Research Intern, Department of Market Research"
 date_start: 2025-07-01
