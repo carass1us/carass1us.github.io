@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,158 +52,33 @@
 
     <section class="container" style="padding-bottom: 5rem;">
         <div class="syllabus-timeline">
-            
+            {% assign sorted_weeks = site.data.ta_weeks | sort: 'week' %}
+            {% for week in sorted_weeks %}
             <div class="syllabus-item">
-                <div class="week-badge">Week 0</div>
+                <div class="week-badge">Week {{ week.week }}</div>
                 <div class="syllabus-content">
-                    <span class="class-date">Feb 02, 2026</span>
-                    <h3>Prerequisites</h3>
-                    <p>Some resources you guys might find useful. Mainly syllabus and materials.</p>
-                    
+                    {% if week.date %}<span class="class-date">{{ week.date }}</span>{% endif %}
+                    <h3>{{ week.title }}</h3>
+                    {% if week.description %}<p>{{ week.description }}</p>{% endif %}
+                    {% if week.actions %}
                     <div class="syllabus-actions">
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/15iB3uY3vSu_zVzxJWLnVJIbjh9wBz2kB/preview">
-                            <i class="fas fa-desktop"></i> Syllabus [25/26]
+                        {% for action in week.actions %}
+                        {% if action.type == "slides" %}
+                        <button class="btn-action view-slides" data-pdf="{{ action.url }}">
+                            <i class="{{ action.icon }}"></i> {{ action.label }}
                         </button>
-                        
-                        <a href="https://drive.google.com/file/d/1btz1GW7niRyF0BmE_ugGETiy6RqT_osP/preview" download class="btn-action download-btn">
-                            <i class="fas fa-download"></i> Book - Verbeek
+                        {% elsif action.type == "download" %}
+                        <a href="{{ action.url }}" download class="btn-action download-btn">
+                            <i class="{{ action.icon }}"></i> {{ action.label }}
                         </a>
-
-                        <a href="https://drive.google.com/drive/folders/19bxGm8mI_L9VV8JgKgFrPvirifPaGcN4?usp=sharing" download class="btn-action download-btn">
-                            <i class="fas fa-file-pdf"></i> BAS[IE] Exam Bank
-                        </a>
-
+                        {% endif %}
+                        {% endfor %}
                     </div>
+                    {% endif %}
                 </div>
             </div>
-
-            <div class="syllabus-item">
-                <div class="week-badge">Week 1</div>
-                <div class="syllabus-content">
-                    <span class="class-date">Feb 04, 2026</span>
-                    <h3>Review on Maximum Likelihood Estimation</h3>
-                    <p>The likelihood function and identification of parameters, the principle of maximum likelihood.</p>
-                    
-                    <div class="syllabus-actions">
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/1cBqmHIw1OCxwAgfFSoo5cUIa84oV1sAJ/preview">
-                            <i class="fas fa-desktop"></i> Slides [cr: Nathanael Hutabarat]
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="syllabus-item">
-                <div class="week-badge">Week 2</div>
-                <div class="syllabus-content">
-                    <span class="class-date">Feb 11, 2026</span>
-                    <h3>Binary Choice Model: Logit and Probit Model</h3>
-                    <p>Why not a linear regression/linear probability model? Introducing the binary choice model.</p>
-                    
-                    <div class="syllabus-actions">
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/16htTP_04qti9Rf2KBpzMaNMmX6fcIixX/preview">
-                            <i class="fas fa-desktop"></i> Slides [cr: Nathanael Hutabarat]
-                        </button>
-
-                        <a href="https://drive.google.com/file/d/1Tz90LROvmKp3OjVfOd2dPku2QJH1dIH8/preview" download class="btn-action download-btn">
-                            <i class="fas fa-download"></i> .do File
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="syllabus-item">
-                <div class="week-badge">Week 3</div>
-                <div class="syllabus-content">
-                    <span class="class-date">Feb 18, 2026</span>
-                    <h3>Multiresponse: Ordered Response Model</h3>
-                    <p>Analyze ordinal dependent variables; categories with a natural, inherent ranking, such as survey responses.</p>
-                    
-                    <div class="syllabus-actions">
-
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/1aQ497rBjNRGzpHSFrj8Ki_oJa0cFXsVB/preview">
-                            <i class="fas fa-video"></i> Recording
-                        </button>
-
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/1WY_KG6XcLnvZ4qjPcqm4zpOOufpJEPFW/preview">
-                            <i class="fas fa-desktop"></i> Slides
-                        </button>
-                    
-                        <a href="https://drive.google.com/file/d/1yONFrSmlF8DriEusiLwqZ4awJ3UYbV5T/preview" download class="btn-action download-btn">
-                            <i class="fas fa-download"></i> .do File
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="syllabus-item">
-                <div class="week-badge">Week 4</div>
-                <div class="syllabus-content">
-                    <span class="class-date">Feb 25, 2026</span>
-                    <h3>Multiresponse: Unordered Response Model</h3>
-                    <p>Analyze categorical dependent variables with no natural, inherent ranking, such as brand preferences.</p>
-                    
-                    <div class="syllabus-actions">
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/1ck-kNsGBay-xHEKsRUeQFLG-udDNLRzD/preview">
-                            <i class="fas fa-desktop"></i> Slides
-                        </button>
-                    
-                        <a href="https://drive.google.com/file/d/1s-xGAxMsr-6duBk49JF2pM_UYRknq-O7/preview" download class="btn-action download-btn">
-                            <i class="fas fa-download"></i> .do File
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="syllabus-item">
-                <div class="week-badge">Week 5</div>
-                <div class="syllabus-content">
-                    <span class="class-date">March 4, 2026</span>
-                    <h3>Count Data Model</h3>
-                    <p>Specialized regression techniques for dependent variables that are non-negative integers.</p>
-                    
-                    <div class="syllabus-actions">
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/1fMxLv4ApYwj3SgIJob5ubiXR1PvmcnQm/preview">
-                            <i class="fas fa-desktop"></i> Slides [cr: Christoper Jhonatan]
-                        </button>
-                    
-                        <a href="https://drive.google.com/file/d/1jalaf2lToI0ihgsriqCyDNBRl7nJMWAc/preview" download class="btn-action download-btn">
-                            <i class="fas fa-download"></i> .do File
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="syllabus-item">
-                <div class="week-badge">Week 6</div>
-                <div class="syllabus-content">
-                    <span class="class-date">March 28, 2026</span>
-                    <h3>Midterms 2024/2025 Tutorial</h3>
-                    <p>Practicing for midterm exams through tutorial from past exams.</p>
-                    
-                    <div class="syllabus-actions">
-
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/100XdCi78gBbWlQRHd4736thummrPrHW5/preview">
-                            <i class="fas fa-video"></i> Recording
-                        </button>
-
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/1rOxaNgM3syQ_Vb1pZ5e3iPArAYUGtqb_/preview">
-                            <i class="fas fa-desktop"></i> Question
-                        </button>
-
-                        <button class="btn-action view-slides" data-pdf="https://drive.google.com/file/d/1FhGCmG-GLZiYoUMp1KnAfz5PJ3UGh6Ol/preview">
-                            <i class="fas fa-desktop"></i> Answer
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-            </div>
+            {% endfor %}
+        </div>            </div>
     </section>
 
     <div id="pdfModal" class="modal">

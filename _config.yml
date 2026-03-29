@@ -1,0 +1,17 @@
+title: "Rafi Nurahmat Jannata"
+description: "Portfolio of Rafi. Creator of Fishnomics."
+url: "https://carass1us.github.io"
+baseurl: ""
+
+collections:
+  experiences:
+    output: false
+  projects:
+    output: false
+
+exclude:
+  - "*.sh"
+  - "node_modules"
+  - "vendor"
+  - "Gemfile"
+  - "Gemfile.lock"
