@@ -94,7 +94,7 @@
         <h2 class="section-title">Professional Experience</h2>
         
         <div class="accordion">
-            {% assign sorted_experiences = site.experiences | sort: 'date_start' | reverse %}
+            {% assign sorted_experiences = site.experiences | sort: 'order' %}
             {% for exp in sorted_experiences %}
             <div class="accordion-item">
                 <div class="accordion-header">
