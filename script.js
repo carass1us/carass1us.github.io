@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ========================================= */
 
     function updateClock() {
-        const now = new Array();
         const dateObj = new Date(); // Ambil waktu sekarang
 
         // 1. FORMAT JAM (HH:MM:SS)
@@ -186,50 +185,54 @@ document.addEventListener('DOMContentLoaded', () => {
 /* =========================================
    TEACHING SLIDES VIEWER LOGIC
    ========================================= */
-const viewSlideBtns = document.querySelectorAll('.view-slides');
-// Kita pakai modal yang sama dengan portfolio
-const modal = document.getElementById('pdfModal'); 
-const modalImg = document.getElementById('pdf-frame');
-const captionText = document.getElementById('modal-title');
-const downloadLink = document.getElementById('download-link');
-const closeModal = document.querySelector('.close-modal');
+document.addEventListener('DOMContentLoaded', () => {
+    const viewSlideBtns = document.querySelectorAll('.view-slides');
+    // Kita pakai modal yang sama dengan portfolio
+    const modal = document.getElementById('pdfModal'); 
+    const modalImg = document.getElementById('pdf-frame');
+    const captionText = document.getElementById('modal-title');
+    const downloadLink = document.getElementById('download-link');
+    const closeModalBtn = document.querySelector('.close-modal');
 
-if (viewSlideBtns) {
-    viewSlideBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault(); // Mencegah scroll ke atas
-            
-            const pdfUrl = this.getAttribute('data-pdf');
-            
-            // Ambil judul dari elemen h3 di dekat tombol
-            // (Traversing DOM: tombol -> parent action -> parent content -> cari h3)
-            const title = this.closest('.syllabus-content').querySelector('h3').innerText;
+    if (!modal) return;
 
-            modal.style.display = "block";
-            modalImg.src = pdfUrl;
-            captionText.innerText = title; // Set judul modal sesuai materi
-            downloadLink.href = pdfUrl;
-            
-            // Lock Scroll
-            document.body.style.overflow = "hidden";
+    if (viewSlideBtns) {
+        viewSlideBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault(); // Mencegah scroll ke atas
+                
+                const pdfUrl = this.getAttribute('data-pdf');
+                
+                // Ambil judul dari elemen h3 di dekat tombol
+                // (Traversing DOM: tombol -> parent action -> parent content -> cari h3)
+                const title = this.closest('.syllabus-content').querySelector('h3').innerText;
+
+                modal.style.display = "block";
+                modalImg.src = pdfUrl;
+                captionText.innerText = title; // Set judul modal sesuai materi
+                downloadLink.href = pdfUrl;
+                
+                // Lock Scroll
+                document.body.style.overflow = "hidden";
+            });
         });
-    });
-}
-
-// Logic Close Modal (Sudah ada di script lama, tapi pastikan ini tercover)
-if (closeModal) {
-    closeModal.addEventListener('click', () => {
-        modal.style.display = "none";
-        modalImg.src = ""; // Stop loading PDF
-        document.body.style.overflow = "auto"; // Unlock scroll
-    });
-}
-
-// Close kalau klik di luar modal
-window.addEventListener('click', (e) => {
-    if (e.target == modal) {
-        modal.style.display = "none";
-        modalImg.src = "";
-        document.body.style.overflow = "auto";
     }
+
+    // Logic Close Modal (Sudah ada di script lama, tapi pastikan ini tercover)
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = "none";
+            modalImg.src = ""; // Stop loading PDF
+            document.body.style.overflow = "auto"; // Unlock scroll
+        });
+    }
+
+    // Close kalau klik di luar modal
+    window.addEventListener('click', (e) => {
+        if (e.target == modal) {
+            modal.style.display = "none";
+            modalImg.src = "";
+            document.body.style.overflow = "auto";
+        }
+    });
 });
